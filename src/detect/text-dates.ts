@@ -45,7 +45,11 @@ interface DateMatch {
 export function findTextEvents(text: string, opts: TextDateOptions): TextDraft[] {
   const input = text.slice(0, MAX_TEXT_LENGTH);
   const parser = opts.dayFirst ? chrono.en.GB : chrono.casual;
-  const results = parser.parse(input, opts.sentAt, { forwardDate: true });
+  // chrono reads a bare length of time ("for 45 minutes", "within 2 hours") as that long after the
+  // sent date, which is never the plan being described.
+  const results = parser
+    .parse(input, opts.sentAt, { forwardDate: true })
+    .filter((r) => !r.tags().has('result/relativeDateAndTime'));
   const drafts: TextDraft[] = [];
 
   for (const match of pairDaysWithTimes(input, results)) {

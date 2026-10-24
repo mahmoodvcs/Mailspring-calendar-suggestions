@@ -137,6 +137,11 @@ describe('dates in text', () => {
     const [call] = detectText('Quick 30-minute call tomorrow at 9am?');
     assert.deepEqual(call.start, new Date(2026, 9, 2, 9, 0));
     assert.deepEqual(call.end, new Date(2026, 9, 2, 9, 30));
+
+    const [meeting, ...rest] = detectText('Can we meet on Tuesday, October 6 at 2:00 PM for 45 minutes?');
+    assert.equal(rest.length, 0);
+    assert.deepEqual(meeting.start, new Date(2026, 9, 6, 14, 0));
+    assert.deepEqual(meeting.end, new Date(2026, 9, 6, 14, 45));
   });
 
   it('suggests an all-day event for a dated event noun', () => {
@@ -183,6 +188,7 @@ describe('dates in text', () => {
     ['a reply attribution','On Mon, Oct 5, 2026 at 3:00 PM Alice <a@b.com> wrote:'],
     ['digits inside a URL', 'Join the meeting notes at https://example.com/2026/10/12/agenda'],
     ['a date that has passed', 'Meeting yesterday at 3pm went well.'],
+    ['a bare length of time', 'The call should only take 45 minutes, or within 2 hours at most.'],
   ]) {
     it(`ignores ${label}`, () => {
       assert.deepEqual(detectText(text), []);
