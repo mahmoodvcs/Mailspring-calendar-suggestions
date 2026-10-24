@@ -1,0 +1,34 @@
+{
+  "name": "calendar-suggestions",
+  "displayName": "Calendar Suggestions",
+  "version": "0.1.0",
+  "description": "Spots meetings, reservations and other dated plans in an email and offers to add them to your calendar",
+  "main": "./lib/main",
+  "license": "GPL-3.0",
+  "private": true,
+  "engines": {
+    "mailspring": ">=1.26.0"
+  },
+  "windowTypes": {
+    "default": true,
+    "thread-popout": true
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "watch": "node scripts/build.mjs --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test spec/*.spec.ts",
+    "install-plugin": "node scripts/build.mjs && node scripts/install.mjs",
+    "install-plugin:dev": "node scripts/build.mjs && node scripts/install.mjs --dev"
+  },
+  "dependencies": {
+    "chrono-node": "^2.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^17.0.0",
+    "esbuild": "^0.25.0",
+    "tsx": "^4.19.0",
+    "typescript": "5.7.3"
+  }
+}

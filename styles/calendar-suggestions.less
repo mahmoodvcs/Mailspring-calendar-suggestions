@@ -1,0 +1,170 @@
+@import 'ui-variables';
+
+.calendar-suggestions {
+  cursor: default;
+  font-size: @font-size-small;
+  margin-top: @spacing-standard;
+  width: 100%;
+  border-radius: @border-radius-base;
+  border: 1px solid @border-color-divider;
+
+  .cs-header {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    border-bottom: 1px solid @border-color-divider;
+    color: @text-color-subtle;
+
+    img {
+      margin-right: 10px;
+    }
+
+    .cs-heading {
+      flex: 1;
+    }
+
+    .cs-dismiss {
+      font-size: 16px;
+      line-height: 1;
+      padding: 0 4px;
+      color: @text-color-very-subtle;
+      cursor: pointer;
+
+      &:hover {
+        color: @text-color;
+      }
+    }
+  }
+
+  .cs-row {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+
+    & + .cs-row {
+      border-top: 1px solid @border-color-divider;
+    }
+  }
+
+  .cs-details {
+    flex: 1;
+    min-width: 0;
+
+    .cs-when {
+      color: @text-color;
+      font-size: @font-size-base;
+      font-weight: @font-weight-semi-bold;
+    }
+
+    .cs-what,
+    .cs-context {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .cs-what {
+      color: @text-color;
+    }
+
+    .cs-location,
+    .cs-context {
+      color: @text-color-very-subtle;
+    }
+  }
+
+  .cs-actions {
+    flex-shrink: 0;
+    margin-left: @spacing-standard;
+    text-align: right;
+
+    .cs-status {
+      color: @text-color-subtle;
+    }
+
+    .cs-added {
+      color: @color-success;
+    }
+
+    .cs-error {
+      color: @color-danger;
+    }
+
+    a {
+      color: @text-color-link;
+      cursor: pointer;
+    }
+  }
+}
+
+.calendar-suggestions-popover {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 340px;
+  padding: 12px;
+  font-size: @font-size-small;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    color: @text-color-subtle;
+  }
+
+  input[type='text'],
+  input[type='date'],
+  input[type='datetime-local'],
+  textarea,
+  select {
+    width: 100%;
+    color: @text-color;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  .cs-title-input {
+    font-size: @font-size-base;
+  }
+
+  .cs-checkbox {
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+
+    input {
+      margin: 0;
+    }
+  }
+
+  .cs-row-pair {
+    display: flex;
+    gap: 8px;
+
+    label {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+
+  .cs-field-note {
+    color: @text-color-very-subtle;
+  }
+
+  .cs-error {
+    color: @color-danger;
+  }
+
+  .cs-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 4px;
+  }
+}
+
+body.platform-win32 .calendar-suggestions {
+  border-radius: 0;
+}
