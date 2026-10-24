@@ -1,7 +1,7 @@
 {
   "name": "calendar-suggestions",
   "displayName": "Calendar Suggestions",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Spots meetings, reservations and other dated plans in an email and offers to add them to your calendar",
   "main": "./lib/main",
   "license": "GPL-3.0",

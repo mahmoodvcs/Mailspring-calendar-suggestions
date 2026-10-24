@@ -121,8 +121,14 @@
     color: @text-color;
   }
 
+  // Mailspring styles text inputs from the theme but leaves textareas at the browser's white.
   textarea {
     resize: vertical;
+    padding: 2px @padding-xs-horizontal;
+    font-weight: 400;
+    background: @input-bg;
+    border-radius: @border-radius-base;
+    border: 1px solid @input-border-color;
   }
 
   .cs-title-input {
